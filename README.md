@@ -1,4 +1,5 @@
 === Crypto Payments Woo - Bitcoin/FairCoin Gateway for WooCommerce ===
+
 Contributors: Idan-Neeman, cryptartica, sanchaz
 Donation address: Bitcoin - 17iHDVnEktxcSvtcbNuhu16A9qhWLZ4n6Y | FairCoin - fanWh4UNEUqTpZU3JTFeesyzyoE1bew7ZC
 Tags: bitcoin, faircoin, bitcoin wordpress plugin, faircoin wordpress plugin
