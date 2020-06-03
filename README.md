@@ -104,7 +104,7 @@ Are there any fees? No! There is no middle man, no fees are ever taken at any po
 
 Can I contribute? Sure! Go ahead and make a pull request. Clearly explain what the change does, what's the intended result and why it's required and if it changes any existing behaviour.
 
-== Changelog ==
+== Changelog ==  
 = 1.01 =
 * Fix bugs & Adding php 7.4 support
 
