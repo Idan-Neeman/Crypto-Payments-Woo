@@ -101,7 +101,7 @@ class WCP_FairCoin_FAIR extends WCP_Crypto {
                 </td>
                 <td>
                   <div style="padding:2px 0px;">
-                    <a href="{{{FAIRCOINS_PAY_URL}}}"><img src="https://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=bitcoin%3A{{{FAIRCOINS_ADDRESS}}}%3Famount%3D{{{FAIRCOINS_AMOUNT}}}%26message%3D{{{PAYMENT_MESSAGE_URL_SAFE}}}&amp;qzone=1&amp;margin=0&amp;size=180x180&amp;ecc=L" style="vertical-align:middle;border:1px solid #888;" /></a>
+                    <a href="{{{FAIRCOINS_PAY_URL}}}"><img src="https://api.qrserver.com/v1/create-qr-code/?color=000000&amp;bgcolor=FFFFFF&amp;data=faircoin%3A{{{FAIRCOINS_ADDRESS}}}%3Famount%3D{{{FAIRCOINS_AMOUNT}}}%26message%3D{{{PAYMENT_MESSAGE_URL_SAFE}}}&amp;qzone=1&amp;margin=0&amp;size=180x180&amp;ecc=L" style="vertical-align:middle;border:1px solid #888;" /></a>
                   </div>
                 </td>
               </tr>

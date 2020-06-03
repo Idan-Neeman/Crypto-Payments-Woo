@@ -1,4 +1,5 @@
 <?php
+
 /***********************************************************************
 Copyright (C) 2012 Matyas Danter
 
@@ -19,7 +20,7 @@ THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
 OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
-*************************************************************************/
+ *************************************************************************/
 
 /**
  * The bcmath extension in PHP does not implement certain operations
@@ -35,11 +36,14 @@ class bcmath_Utils
 {
     public static function bchexdec($hex)
     {
-        if (extension_loaded('bcmath') && USE_EXT=='BCMATH') {
+        if (extension_loaded('bcmath') && USE_EXT == 'BCMATH') {
             $len = strlen($hex);
             $dec = '';
             for ($i = 1; $i <= $len; $i++) {
-                $dec = bcadd($dec, bcmul(strval(hexdec($hex[$i - 1])), bcpow('16', strval($len - $i))));
+                if ($hex[$i - 1] == 'x')
+                    $dec = bcadd($dec, bcmul(strval(0), bcpow('16', strval($len - $i))));
+                else
+                    $dec = bcadd($dec, bcmul(strval(hexdec($hex[$i - 1])), bcpow('16', strval($len - $i))));
             }
 
             return $dec;
@@ -50,7 +54,7 @@ class bcmath_Utils
 
     public static function bcdechex($dec)
     {
-        if (extension_loaded('bcmath') && USE_EXT=='BCMATH') {
+        if (extension_loaded('bcmath') && USE_EXT == 'BCMATH') {
             $hex = '';
             $positive = $dec < 0 ? false : true;
 
@@ -114,7 +118,7 @@ class bcmath_Utils
         }
         $left  = self::dec2base($left, 2);
         $right = self::dec2base($right, 2);
-        $len   = max(strlen($left), strlen($right), (int)$bits);
+        $len   = max(strlen($left), strlen($right), (int) $bits);
         $left  = sprintf("%0{$len}s", $left);
         $right = sprintf("%0{$len}s", $right);
 
@@ -136,7 +140,7 @@ class bcmath_Utils
 
     public static function bcor($x, $y)
     {
-        if (extension_loaded('bcmath') && USE_EXT=='BCMATH') {
+        if (extension_loaded('bcmath') && USE_EXT == 'BCMATH') {
             return self::_bcbitwise_internal($x, $y, 'self::_bcor');
         } else {
             throw new ErrorException("Please install BCMATH");
@@ -147,7 +151,7 @@ class bcmath_Utils
 
     public static function bcxor($x, $y)
     {
-        if (extension_loaded('bcmath') && USE_EXT=='BCMATH') {
+        if (extension_loaded('bcmath') && USE_EXT == 'BCMATH') {
             return self::_bcbitwise_internal($x, $y, 'self::_bcxor');
         } else {
             throw new ErrorException("Please install BCMATH");
@@ -158,7 +162,7 @@ class bcmath_Utils
 
     public static function bcleftshift($num, $shift)
     {
-        if (extension_loaded('bcmath') && USE_EXT=='BCMATH') {
+        if (extension_loaded('bcmath') && USE_EXT == 'BCMATH') {
             bcscale(0);
             return bcmul($num, bcpow(2, $shift));
         } else {
@@ -170,7 +174,7 @@ class bcmath_Utils
 
     public static function bcrightshift($num, $shift)
     {
-        if (extension_loaded('bcmath') && USE_EXT=='BCMATH') {
+        if (extension_loaded('bcmath') && USE_EXT == 'BCMATH') {
             bcscale(0);
             return bcdiv($num, bcpow(2, $shift));
         } else {
@@ -198,15 +202,15 @@ class bcmath_Utils
     }
 
     // _bcbitwise_internal - The majority of the code that implements
-//                       the bitwise functions bcand, bcor, and bcxor.
-//
+    //                       the bitwise functions bcand, bcor, and bcxor.
+    //
     // arguments           - $x and $y are the operands (in decimal format),
-//                       and $op is the name of one of the three
-//                       internal functions, _bcand, _bcor, or _bcxor.
-//
-//
+    //                       and $op is the name of one of the three
+    //                       internal functions, _bcand, _bcor, or _bcxor.
+    //
+    //
     // see also            - The interfaces to this function: bcand, bcor,
-//                       and bcxor
+    //                       and bcxor
 
     public static function _bcbitwise_internal($x, $y, $op)
     {
@@ -239,7 +243,7 @@ class bcmath_Utils
         return self::base2dec($num, MAX_BASE);
     }
 
-    public static function dec2base($dec, $base, $digits=false)
+    public static function dec2base($dec, $base, $digits = false)
     {
         if (extension_loaded('bcmath')) {
             if ($base < 2 or $base > 256) {
@@ -262,7 +266,7 @@ class bcmath_Utils
         }
     }
 
-    public static function base2dec($value, $base, $digits=false)
+    public static function base2dec($value, $base, $digits = false)
     {
         if (extension_loaded('bcmath')) {
             if ($base < 2 or $base > 256) {
@@ -306,7 +310,7 @@ class bcmath_Utils
             }
         } else {
             $digits = "0123456789abcdefghijklmnopqrstuvwxyz";
-            $digits.="ABCDEFGHIJKLMNOPQRSTUVWXYZ-_";
+            $digits .= "ABCDEFGHIJKLMNOPQRSTUVWXYZ-_";
         }
         $digits = substr($digits, 0, $base);
 

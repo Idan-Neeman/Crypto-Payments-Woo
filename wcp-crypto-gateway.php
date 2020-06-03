@@ -164,7 +164,7 @@ function WCP__plugins_loaded__load_crypto_gateway()
 			// ----------------------------------
 			// Validate connection to exchange rate services
 			$store_currency_code = get_woocommerce_currency();
-			if ($store_currency_code != 'BTC') {
+			if ($store_currency_code != 'BTC' && $store_currency_code != 'FAIR') {
 				$exchange_rate = $this->get_exchange_rate_per_crypto();
 				if (!$exchange_rate) {
 
@@ -274,7 +274,7 @@ function WCP__plugins_loaded__load_crypto_gateway()
 			// -----------------------------------
 			// Assemble currency ticker.
 			$store_currency_code = get_woocommerce_currency();
-			if ($store_currency_code == 'BTC') {
+			if ($store_currency_code == 'BTC' || $store_currency_code == 'FAIR') {
 				$currency_code = 'USD';
 			} else {
 				$currency_code = $store_currency_code;
@@ -548,7 +548,7 @@ function WCP__plugins_loaded__load_crypto_gateway()
 			}
 
 			$order_total_in_crypto = ($order->get_total() / $exchange_rate);
-			if (get_woocommerce_currency() != 'BTC') {
+			if (get_woocommerce_currency() != 'BTC' && get_woocommerce_currency() != 'FAIR') {
 				// Apply exchange rate multiplier only for stores with non-crypto currency default currency.
 				$order_total_in_crypto = $order_total_in_crypto;
 			}
@@ -634,9 +634,6 @@ function WCP__plugins_loaded__load_crypto_gateway()
 			// Remove cart
 			$woocommerce->cart->empty_cart();
 
-			// Empty awaiting payment session
-			unset($_SESSION['order_awaiting_payment']);
-
 			// Get the order key correctly and Return thankyou redirect
 			$order_key = get_post_meta($order_id, '_order_key', true);
 			if (version_compare(WOOCOMMERCE_VERSION, '2.1', '<')) {
@@ -666,11 +663,11 @@ function WCP__plugins_loaded__load_crypto_gateway()
 			$order = wc_get_order($order_id);
 
 			// Redirect to "order received" page if the order is already paid
-			if ( $order->is_paid() ) {
+			if ($order->is_paid()) {
 				$redirect = $order->get_checkout_order_received_url();
 				wp_safe_redirect($redirect);
 				exit;
-            }
+			}
 
 			$instructions = $this->fill_in_instructions($order);
 
@@ -830,10 +827,7 @@ function WCP__plugins_loaded__load_crypto_gateway()
 		}
 
 		// Notify admin about payment processed
-		$email = get_settings('admin_email');
-		if (!$email) {
-			$email = get_option('admin_email');
-		}
+		$email = get_option('admin_email');
 		if ($email) {
 			$sanitary_email = sanitize_email($email);
 			// Send email from admin to admin

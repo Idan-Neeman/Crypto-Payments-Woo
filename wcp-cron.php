@@ -145,8 +145,6 @@ class BitcoinBTCCronJob extends CryptoCronJob
 		global $wpdb;
 
 		$crypto_addresses_table_name = $this->get_table_name();
-		$name = $this->get_settings_name();
-		$variant_settings = esc_attr(get_option($name));
 		$confs = esc_attr(get_option(WCP_BTC_SETTINGS)['confs_num']);
 
 		$funds_received_value_expires_in_secs = 0; // $this->wcp_settings['funds_received_value_expires_in_mins'] * 60;
@@ -312,7 +310,7 @@ class BitcoinBTCCronJob extends CryptoCronJob
 	}
 }
 
-class BitcoinFAIRCronJob extends CryptoCronJob
+class FaircoinFAIRCronJob extends CryptoCronJob
 {
 
 	private $gateway;
@@ -333,8 +331,6 @@ class BitcoinFAIRCronJob extends CryptoCronJob
 		global $wpdb;
 		$crypto_addresses_table_name = $this->get_table_name();
 
-		$name = WCP_FAIR_SETTINGS;
-		$variant_settings = esc_attr(get_option($name));
 		$funds_received_value_expires_in_secs = 0; // $this->wcp_settings['funds_received_value_expires_in_mins'] * 60;
 		$assigned_address_expires_in_secs     = $this->wcp_settings['assigned_address_expires_in_mins'] * 60;
 
@@ -446,7 +442,7 @@ class BitcoinFAIRCronJob extends CryptoCronJob
 					*/
 
 						// Last order was fully paid! Complete it...
-						WCP__log_event(__FILE__, __LINE__, "Cron job: NOTE: Full payment for order ID '{$last_order_info['order_id']}' detected at address: '{$row_for_balance_check['btc_address']}' (BTC '{$balance_info_array['balance']}'). Total was required for this order: '{$last_order_info['order_total']}'. Processing order ...");
+						WCP__log_event(__FILE__, __LINE__, "Cron job: NOTE: Full payment for order ID '{$last_order_info['order_id']}' detected at address: '{$row_for_balance_check['fair_address']}' (FAIR '{$balance_info_array['balance']}'). Total was required for this order: '{$last_order_info['order_total']}'. Processing order ...");
 
 						// Update order' meta info
 						$address_meta['orders'][0]['paid'] = true;
@@ -506,7 +502,7 @@ function WCP_cron_job_worker()
 {
 	global $wpdb;
 
-	$cron_classes = array('BitcoinFAIRCronJob', 'BitcoinBTCCronJob');
+	$cron_classes = array('FaircoinFAIRCronJob', 'BitcoinBTCCronJob');
 
 	foreach ($cron_classes as $job_class) {
 		$job = new $job_class();

@@ -3,7 +3,7 @@
 Plugin Name: Crypto Payments Woo
 Plugin URI: https://github.com/Idan-Neeman/Crypto-Payments-Woo
 Description: Accept Bitcoin/FairCoin payment from WooCommerce store without help of middle man! Receive payment instantly and directly to your own coin address (generate on-the-fly by Electrum) without rotating to 3rd party wallet.
-Version: 1.00
+Version: 1.01
 Author: Idan Neeman
 Author URI: https://github.com/Idan-Neeman
 License: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl.html
@@ -49,7 +49,10 @@ function WCP_activate() {
 	$wcp_settings = wcp__get_settings();
 
 	// Create necessary database tables if not already exists...
-	WCP__create_database_tables( $wcp_settings );
+	WCP__create_database_tables();
+
+	// Re-get all the rest settings (general, btc, fair).
+	wcp__update_settings();
 
 	// ----------------------------------
 	// Setup cron jobs
@@ -93,7 +96,7 @@ function WCP_deactivate() {
 // ---------------------------------------------------------------------------
 // uninstalling
 function WCP_uninstall() {
-	$delete_data = esc_attr( get_option(WCP_GENERAL_SETTINGS)['delete_db_tables_on_uninstall'] );
+	$delete_data = esc_attr(get_option(WCP_GENERAL_SETTINGS)['delete_db_tables_on_uninstall']);
 
 	if ( $delete_data ) {
 		// delete all settings.

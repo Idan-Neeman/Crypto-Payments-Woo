@@ -332,8 +332,8 @@ if (class_exists('WP_OSA')) {
 			It is recommended to regenerate new wallet after number of used wallet addresses reaches 1000. Wallets with very high gap limits (>1000) are very slow to sync with blockchain and they put an extra load on the network.<br/>
 			Privacy mode offers the best anonymity and privacy to the store albeit with the drawbacks of potentially flooding your Electrum wallet with expired and zero-balance addresses.', 'WCP'),
 			'options' => array(
-				'1' => 'Enable',
-				'0'  => 'Disable',
+				'1' => 'Disable',
+				'0'  => 'Enable',
 			),
 		)
 	);
@@ -365,7 +365,9 @@ and $cron_script turn on as cron job task (every 5 minutes) in your hosting.</br
 <br />
 <br>
 If DISABLE_WP_CRON is TRUE then this assumes the Cron job is driven by the website hosting system/server (usually via CPanel).
-<span style="color: red;"><br>DISABLE_WP_CRON is: <b>$wp_cron_status </span>
+<span style="color: red;"><br>DISABLE_WP_CRON is: <b>$wp_cron_status</b></span>
+<br/><br/>
+<b>Important:</b> If you selected Soft Cron mode and payments do not automatically detect, you must add Cron Job in your hosting manually! just add $cron_script as cron job task (every 5 minutes).
 EOT;
 
 	$wposa_obj->add_field(

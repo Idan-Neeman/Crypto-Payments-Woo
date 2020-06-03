@@ -1,10 +1,11 @@
 === Crypto Payments Woo - Bitcoin/FairCoin Gateway for WooCommerce ===
+
 Contributors: Idan-Neeman, cryptartica, sanchaz
 Donation address: Bitcoin - 17iHDVnEktxcSvtcbNuhu16A9qhWLZ4n6Y | FairCoin - fanWh4UNEUqTpZU3JTFeesyzyoE1bew7ZC
 Tags: bitcoin, faircoin, bitcoin wordpress plugin, faircoin wordpress plugin
 Requires at least: Wordpress 3.0.1
 Tested up to: Wordpress 5.4.1
-Requires PHP: 5.6.40
+Requires PHP: 5.6.40 or newer
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -103,11 +104,16 @@ Are there any fees? No! There is no middle man, no fees are ever taken at any po
 
 Can I contribute? Sure! Go ahead and make a pull request. Clearly explain what the change does, what's the intended result and why it's required and if it changes any existing behaviour.
 
+== Changelog ==
+= 1.01 =
+* Fix bugs & Adding php 7.4 support
+
+= 1.00 =
+* Initial Release
+
 == Roadmap ==
 
 
 == Upgrade Notice ==
 
 None
-
-

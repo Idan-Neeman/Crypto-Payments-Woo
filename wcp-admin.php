@@ -55,8 +55,8 @@ $g_wcp_fair_user_defaults = array(
 global 	 $g_wcp_general_defaults;
 $g_wcp_general_defaults = array(
 	'enable_soft_cron'            								 		=> '1',
-	'delete_db_tables_on_uninstall'                   => '0',
-	'reuse_expired_addresses'                         => '0',   // True - may reduce anonymouty of store customers (someone may click/generate bunch of fake orders to list many addresses that in a future will be used by real customers).
+	'delete_db_tables_on_uninstall'                   => '1',
+	'reuse_expired_addresses'                         => '1',   // True - may reduce anonymouty of store customers (someone may click/generate bunch of fake orders to list many addresses that in a future will be used by real customers).
 																// False - better anonymouty but may leave many addresses in wallet unused (and hence will require very high 'gap limit') due to many unpaid order clicks.
 																// In this case it is recommended to regenerate new wallet after 'gap limit' reaches 1000.
 
@@ -113,7 +113,7 @@ function wcp__get_btc_settings()
 	global   $g_wcp_plugin_directory_url;
 	global 	 $g_wcp_btc_user_defaults;
 
-	$btc_settings = esc_attr(get_option(WCP_BTC_SETTINGS));
+	$btc_settings = get_option(WCP_BTC_SETTINGS);
 	if (!is_array($btc_settings)) {
 		$btc_settings = $g_wcp_btc_user_defaults;
 	}
@@ -131,7 +131,7 @@ function wcp__get_fair_settings()
 	global   $g_wcp_plugin_directory_url;
 	global 	 $g_wcp_fair_user_defaults;
 
-	$fair_settings = esc_attr(get_option(WCP_FAIR_SETTINGS));
+	$fair_settings = get_option(WCP_FAIR_SETTINGS);
 	if (!is_array($fair_settings)) {
 		$fair_settings = $g_wcp_fair_user_defaults;
 	}
@@ -149,7 +149,7 @@ function wcp__get_general_settings()
 	global   $g_wcp_plugin_directory_url;
 	global 	 $g_wcp_general_defaults;
 
-	$general_settings = esc_attr(get_option(WCP_GENERAL_SETTINGS));
+	$general_settings = get_option(WCP_GENERAL_SETTINGS);
 	if (!is_array($general_settings)) {
 		$general_settings = $g_wcp_general_defaults;
 	}
@@ -305,15 +305,15 @@ function WCP__update_cache($exchange_rate, $exchange_reference_rate)
 	$wcp_settings  = wcp__get_settings();
 	$currency_code = get_woocommerce_currency();
 
-	if (!is_array($wcp_settings['exchange_rates'])) {
+	if (!isset($wcp_settings['exchange_rates'])) {
 		$wcp_settings['exchange_rates'] = array();
 	}
 
-	if (!is_array($wcp_settings['exchange_rates'][$currency_code])) {
+	if (!isset($wcp_settings['exchange_rates'][$currency_code])) {
 		$wcp_settings['exchange_rates'][$currency_code] = array();
 	}
 
-	if (!is_array($wcp_settings['exchange_rates'][$currency_code][$exchange_reference_rate])) {
+	if (!isset($wcp_settings['exchange_rates'][$currency_code][$exchange_reference_rate])) {
 		$wcp_settings['exchange_rates'][$currency_code][$exchange_reference_rate] = array();
 	}
 
@@ -335,7 +335,7 @@ function WCP__update_cache($exchange_rate, $exchange_reference_rate)
 							"xused"       - address was used (touched with funds) by unknown entity outside of this application. No metadata is present for this address, will not be able to correlated it with any order.
 							"unknown"     - new address was generated but cannot retrieve balance due to blockchain API failure.
 */
-function WCP__create_database_tables($wcp_settings)
+function WCP__create_database_tables()
 {
 	$create_tables = array('TableFAIR', 'TableBTC');
 

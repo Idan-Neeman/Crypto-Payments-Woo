@@ -403,7 +403,6 @@ class ElectrumFAIRUtil extends ElectrumUtil
 		global $wpdb;
 		$new_fair_address = $addresses['fair_address'];
 		$name = $this->get_settings_name();
-		$variant_settings = esc_attr(get_option($name));
 		$mpk = esc_attr(get_option($name)['electrum_mpk']);
 		$fair_addresses_table_name = $this->get_table_name();
 		$origin_id                = $mpk;
@@ -507,7 +506,6 @@ class ElectrumBTCUtil extends ElectrumUtil
 		global $wpdb;
 		$new_btc_address = $addresses['btc_address'];
 		$name = $this->get_settings_name();
-		$variant_settings = esc_attr(get_option($name));
 		$mpk = esc_attr(get_option($name)['electrum_mpk']);
 		$crypto_addresses_table_name = $this->get_table_name();
 		$origin_id                = $mpk;
@@ -555,7 +553,6 @@ class ElectrumBTCUtil extends ElectrumUtil
 		$assigned_address_expires_in_secs     = $this->wcp_settings['assigned_address_expires_in_mins'] * 60;
 		$funds_received_value_expires_in_secs = $this->wcp_settings['funds_received_value_expires_in_mins'] * 60;
 		$name = $this->get_settings_name();
-		$variant_settings = esc_attr(get_option($name));
 		$mpk = esc_attr(get_option($name)['electrum_mpk']);
 		if ($this->wcp_settings['reuse_expired_addresses']) {
 			$reuse_expired_addresses_freshb_query_part =
@@ -645,7 +642,7 @@ function WCP__file_get_contents($url, $timeout = 60)
 	$response = wp_remote_get($url, $timeout);
 	$resp_code = wp_remote_retrieve_response_code($response);
 	$content = wp_remote_retrieve_body($response);
-	if (!$err && $resp_code == 200) {
+	if ($resp_code == 200) {
 		return trim($content);
 	} else {
 		return false;
@@ -669,8 +666,7 @@ function WCP__safe_string_escape($str = '')
 	$escapeCount  = 0;
 	$targetString = '';
 	for ($offset = 0; $offset < $len; $offset++) {
-		switch ($c = $str{
-		$offset}) {
+		switch ($c = $str[$offset]) {
 			case "'":
 				// Escapes this quote only if its not preceded by an unescaped backslash
 				if ($escapeCount % 2 == 0) {
