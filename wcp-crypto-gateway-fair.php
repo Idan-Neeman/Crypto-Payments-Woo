@@ -134,10 +134,10 @@ class WCP_FairCoin_FAIR extends WCP_Crypto
 
             ' . __('Please note:', 'WCP_I18N_DOMAIN') . '
             <ol>
-                <li>' . __('The payment method chosen ONLY accepts FairCoin! Any other payments (Bitcoin, LiteCoin etc) will not process and the money will be lost forever!', 'WCP_I18N_DOMAIN') . '</li>
+                <li>' . __('The chosen payment method accepts ONLY FairCoin! Any other payments (Bitcoin, LiteCoin etc) will not process and the funds will be lost forever!', 'WCP_I18N_DOMAIN') . '</li>
                 <li>' . __('We are not responsible for lost funds if you send anything other than FAIR', 'WCP_I18N_DOMAIN') . '</li>
                 <li>' . __('You must initiate a payment within 1 hour, or your order may be cancelled', 'WCP_I18N_DOMAIN') . '</li>
-                <li>' . __('As soon as your payment is received in full you will receive email confirmation with order delivery details.', 'WCP_I18N_DOMAIN') . '</li>
+                <li>' . __('As soon as your payment is verified, we will send you a confirmation e-mail with order delivery details.', 'WCP_I18N_DOMAIN') . '</li>
                 <li>{{{EXTRA_INSTRUCTIONS}}}</li>
             </ol>';
 		return $payment_instructions;

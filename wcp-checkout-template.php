@@ -66,10 +66,10 @@ $instructions = $WC_Payment_Gateway->fill_in_instructions($order);
 wp_register_script( 'order_handle', plugins_url('js/app.js', __FILE__) );
 // Localize the script with new data
 $translation_array = array(
-    'checking_balance' => __( 'Checking balance...', 'WCP_I18N_DOMAIN' ),
+    'verifying_payment' => __( 'Verifying payment...', 'WCP_I18N_DOMAIN' ),
     'error' => __( 'Error!', 'WCP_I18N_DOMAIN' ),
-    'checking_balance_timer' => __( 'Check balance in <span id="check-time">60</span> seconds', 'WCP_I18N_DOMAIN' ),
-    'payment_arrived' => __('&#x2705; Payment arrived!', 'WCP_I18N_DOMAIN' )
+    'verifying_payment_timer' => __( 'Verify payment in <span id="check-time">60</span> seconds', 'WCP_I18N_DOMAIN' ),
+    'payment_received' => __('&#x2705; Payment received!', 'WCP_I18N_DOMAIN' )
 );
 wp_localize_script( 'order_handle', 'localize_strings', $translation_array );
 wp_enqueue_script( 'order_handle' );
