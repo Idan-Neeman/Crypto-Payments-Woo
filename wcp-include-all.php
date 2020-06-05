@@ -5,7 +5,7 @@ if (!defined('WCP_PLUGIN_NAME')) {
     define('WCP_PLUGIN_NAME', 'Crypto Payments Woo');
 }
 if (!defined('WCP_VERSION')) {
-    define('WCP_VERSION', '1.01');
+    define('WCP_VERSION', '1.02');
 }
 if (!defined('WCP_SETTINGS_NAME')) {
     define('WCP_SETTINGS_NAME', 'WCP-Settings');
