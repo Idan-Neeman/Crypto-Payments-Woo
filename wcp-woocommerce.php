@@ -127,7 +127,7 @@ function WCP_set_lang_file()
 	if (!empty($currentLocale)) {
 		$moFile = dirname(__FILE__) . '/lang/' . $currentLocale . '.mo';
 		if (@file_exists($moFile) && is_readable($moFile)) {
-			load_textdomain(WCP_I18N_DOMAIN, $moFile);
+			load_textdomain('WCP_I18N_DOMAIN', $moFile);
 		}
 	}
 }
