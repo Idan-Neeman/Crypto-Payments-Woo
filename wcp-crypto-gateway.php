@@ -68,6 +68,9 @@ function WCP__plugins_loaded__load_crypto_gateway()
 			if (!$this->is_gateway_valid_for_use()) {
 				$this->enabled = false;
 			}
+
+			// Payment template loading as API
+			add_action('woocommerce_api_wc_gateway_' . $this->id, array($this, 'checkout_template_loading'));
 		}
 		// -------------------------------------------------------------------
 		//
@@ -636,15 +639,20 @@ function WCP__plugins_loaded__load_crypto_gateway()
 
 			// Get the order key correctly and Return thankyou redirect
 			$order_key = get_post_meta($order_id, '_order_key', true);
+
+			//Get the url of payment form
+			$order_url = WC()->api_request_url('WC_Gateway_' . $this->id);
+			$order_url = add_query_arg('show_order', $order_key, $order_url);
+
 			if (version_compare(WOOCOMMERCE_VERSION, '2.1', '<')) {
 				return array(
 					'result' 	=> 'success',
-					'redirect'	=> add_query_arg('key', $order_key, add_query_arg('order', $order_id, get_permalink(wc_get_page_id('thanks'))))
+					'redirect'	=> $order_url
 				);
 			} else {
 				return array(
 					'result' 	=> 'success',
-					'redirect'	=> add_query_arg('key', $order_key, add_query_arg('order-pay', $order_id, $this->get_return_url($order)))
+					'redirect'	=> $order_url
 				);
 			}
 		}
@@ -672,6 +680,41 @@ function WCP__plugins_loaded__load_crypto_gateway()
 			$instructions = $this->fill_in_instructions($order);
 
 			echo wpautop(wptexturize($instructions));
+		}
+		// -------------------------------------------------------------------
+		// Loading the checkout template
+		// -------------------------------------------------------------------
+		public function redirect_to_template($template)
+		{
+			//add_action('wp_enqueue_scripts', 'bnomics_enqueue_stylesheets' );
+			//add_action('wp_enqueue_scripts', 'bnomics_enqueue_scripts' );
+			if ($overridden_template = locate_template($template)) {
+				// locate_template() returns path to file
+				// if either the child theme or the parent theme have overridden the template
+				load_template($overridden_template);
+			} else {
+				// If neither the child nor parent theme have overridden the template,
+				// we load the template from the 'templates' sub-directory of the directory this file is in
+				load_template(plugin_dir_path(__FILE__) . "/" . $template);
+			}
+			exit();
+		}
+		// -------------------------------------------------------------------
+		// Loading the order and redirect to checkout form template
+		// -------------------------------------------------------------------
+		public function checkout_template_loading()
+		{
+			$order_key = isset($_REQUEST["show_order"]) ? $_REQUEST["show_order"] : "";
+			$order_id = wc_get_order_id_by_order_key($order_key);
+			$order = wc_get_order($order_id);
+			if (!$order) { //If order not exist
+				wp_redirect(home_url());
+				exit();
+			}
+
+			if ($order_key) {
+				$this->redirect_to_template('wcp-checkout-template.php');
+			}
 		}
 		// -------------------------------------------------------------------
 		// -------------------------------------------------------------------
