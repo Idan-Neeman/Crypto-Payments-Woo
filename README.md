@@ -105,6 +105,9 @@ Are there any fees? No! There is no middle man, no fees are ever taken at any po
 Can I contribute? Sure! Go ahead and make a pull request. Clearly explain what the change does, what's the intended result and why it's required and if it changes any existing behaviour.
 
 == Changelog ==  
+= 1.1 =
+* Auto balance checking in order forms (using AJAX)
+
 = 1.02 =
 * Fixed redirect for paid order
 

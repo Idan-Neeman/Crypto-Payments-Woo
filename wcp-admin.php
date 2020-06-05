@@ -23,8 +23,8 @@ $g_wcp_cron_script_url = get_site_url() . '/wp-cron.php';
 // Global default settings
 global $g_wcp_config_defaults;
 $g_wcp_config_defaults = array(
-	'assigned_address_expires_in_mins'     => 5 * 60,   // 5 hours to pay for order and receive necessary number of confirmations.
-	'funds_received_value_expires_in_mins' => '5',      // 'received_funds_checked_at' is fresh (considered to be a valid value) if it was last checked within 'funds_received_value_expires_in_mins' minutes.
+	'assigned_address_expires_in_mins'     => 3 * 60,   // 3 hours to pay for order and receive necessary number of confirmations.
+	'funds_received_value_expires_in_mins' => '2',      // 'received_funds_checked_at' is fresh (considered to be a valid value) if it was last checked within 'funds_received_value_expires_in_mins' minutes.
 	'max_blockchains_api_failures'         => '3',    // Return error after this number of sequential failed attempts to retrieve blockchain data.
 	'max_unusable_generated_addresses'     => '20',   // Return error after this number of unusable (non-empty) wallet addresses were sequentially generated.
 	'blockchain_api_timeout_secs'          => '20',   // Connection and request timeouts for get operations dealing with blockchain requests.

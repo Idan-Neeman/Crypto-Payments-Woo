@@ -867,7 +867,9 @@ function WCP__plugins_loaded__load_crypto_gateway()
 		if ($autocomplete_setting == '1') {
 			// Complete the order
 			$order->update_status('completed', __('Order marked as completed according to plugin settings', 'woocommerce'));
-		}
+		} else
+			$order->update_status('processing', __('Order marked as processing according to plugin settings', 'woocommerce'));
+
 
 		// Notify admin about payment processed
 		$email = get_option('admin_email');

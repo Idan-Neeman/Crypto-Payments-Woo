@@ -1,3 +1,5 @@
+
+<link rel="stylesheet" type="text/css" href="<?php echo plugins_url('css/order.css', __FILE__);?>">
 <?php
 get_header();
 $show_order = isset($_REQUEST["show_order"]) ? $_REQUEST["show_order"] : ""; //order key
@@ -57,7 +59,19 @@ $instructions = $WC_Payment_Gateway->fill_in_instructions($order);
             ?>
 
 </section>
+<script type='text/javascript'>var ajaxurl = "<?php echo admin_url('admin-ajax.php'); ?>"</script>
+
 
 <?php
+wp_register_script( 'order_handle', plugins_url('js/app.js', __FILE__) );
+// Localize the script with new data
+$translation_array = array(
+    'checking_balance' => __( 'Checking balance...', 'WCP_I18N_DOMAIN' ),
+    'error' => __( 'Error!', 'WCP_I18N_DOMAIN' ),
+    'checking_balance_timer' => __( 'Check balance in <span id="check-time">60</span> seconds', 'WCP_I18N_DOMAIN' ),
+    'payment_arrived' => __('&#x2705; Payment arrived!', 'WCP_I18N_DOMAIN' )
+);
+wp_localize_script( 'order_handle', 'localize_strings', $translation_array );
+wp_enqueue_script( 'order_handle' );
 get_footer();
 ?>
