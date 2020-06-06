@@ -125,7 +125,7 @@ class WCP_FairCoin_FAIR extends WCP_Crypto
 				<div class="td-value">
 				<span id="status-msg">' . __('Waiting for payment...', 'WCP_I18N_DOMAIN') . '</span>
 				<div id="loader"></div>
-				<small id="check-time-msg">' . __('Check balance in', 'WCP_I18N_DOMAIN') . ' <span id="check-time">60</span> ' . __('seconds', 'WCP_I18N_DOMAIN') . '</small>
+				<small id="check-time-msg">' . __('Verifying payment in', 'WCP_I18N_DOMAIN') . ' <span id="check-time">60</span> ' . __('seconds', 'WCP_I18N_DOMAIN') . '</small>
 				</div>
 
 				</td>

@@ -8,3 +8,6 @@ cp Crypto-Payments-Woo.pot es_ES.po
 
 # compile .po to .mo
 msgfmt -o es_ES.mo es_ES.po
+
+# if strings change on the sources, run the 'wp i18n make-pot' command like above, and merge the new template with the already translated catalog
+msgmerge -U es_ES.po Crypto-Payments-Woo.pot

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-06-05T22:12:13+00:00\n"
+"POT-Creation-Date: 2020-06-05T23:55:11+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: WCP_I18N_DOMAIN\n"
@@ -95,7 +95,6 @@ msgid "Waiting for payment (include {{{BITCOINS_CONFIRMATIONS}}} confirmations).
 msgstr ""
 
 #: wcp-crypto-gateway-btc.php:121
-#: wcp-crypto-gateway-fair.php:128
 msgid "Check balance in"
 msgstr ""
 
@@ -143,10 +142,22 @@ msgstr ""
 msgid "Waiting for payment..."
 msgstr ""
 
+#: wcp-crypto-gateway-fair.php:128
+msgid "Verifying payment in"
+msgstr ""
+
 #: wcp-crypto-gateway-fair.php:137
 msgid "The chosen payment method accepts ONLY FairCoin! Any other payments (Bitcoin, LiteCoin etc) will not process and the funds will be lost forever!"
 msgstr ""
 
 #: wcp-crypto-gateway-fair.php:140
 msgid "As soon as your payment is verified, we will send you a confirmation e-mail with order delivery details."
+msgstr ""
+
+#: wcp-crypto-gateway.php:53
+msgid "You may send payments from multiple accounts to reach the total required."
+msgstr ""
+
+#: wcp-crypto-gateway.php:314
+msgid "Please, proceed to the next screen to see necessary payment details."
 msgstr ""
