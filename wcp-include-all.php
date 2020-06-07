@@ -25,11 +25,6 @@ if (!defined('WCP_API_SETTINGS')) {
     define('WCP_API_SETTINGS', 'WCP_api');
 }
 //==============================================================================
-// i18n plugin domain for language files
-if (!defined('WCP_I18N_DOMAIN')) {
-    define('WCP_I18N_DOMAIN', 'wcp');
-}
-//==============================================================================
 // Select math library
 if (extension_loaded('gmp') && !defined('USE_EXT')) {
     define('USE_EXT', 'GMP');

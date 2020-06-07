@@ -6,6 +6,10 @@ Description: Accept Bitcoin/FairCoin payment from WooCommerce store without help
 Version: 1.1
 Author: Idan Neeman
 Author URI: https://github.com/Idan-Neeman
+Text Domain: WCP_I18N_DOMAIN
+Domain Path: /lang
+WC requires at least: 3.0.0
+WC tested up to: 4.2.0
 License: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl.html
 */
 
