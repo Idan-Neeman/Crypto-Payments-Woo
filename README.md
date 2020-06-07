@@ -70,6 +70,10 @@ If you encounter any problems, please open an issue.
 ![BTC Gateway Settings](screenshots/screenshot-4.png?raw=true)
 5. FAIR Gateway Settings
 ![FAIR Gateway Settings](/screenshots/screenshot-5.png?raw=true)
+6. Choose Crypto Gateway In Checkout Page
+![FAIR Gateway Settings](/screenshots/screenshot-6.png?raw=true)
+7. Payment Form
+![FAIR Gateway Settings](/screenshots/screenshot-7.png?raw=true)
 
 == Remove plugin ==
 
