@@ -17,7 +17,7 @@ function runInterval() {
 
 function check_balance() {
     if (document.getElementById("check-time-msg") == null) return;
-    document.getElementById("check-time-msg").innerHTML = "<small id='check-time-msg'>" + localize_strings.verifying_payment + "</small>";
+    document.getElementById("check-time-msg").innerHTML = "<small id='check-time-msg'>" + localize_strings.checking_balance + "</small>";
     loadXMLDoc(ajaxurl + "?action=balance_check_action");
 }
 
@@ -53,7 +53,7 @@ function update_status(data) {
         document.getElementById("status-msg").style.color = "red";
     }
     else if (JSON.parse(data).status == 'pending') {
-        document.getElementById("check-time-msg").innerHTML = "<small id='check-time-msg'>" + localize_strings.verifying_payment_timer + "</small>";
+        document.getElementById("check-time-msg").innerHTML = "<small id='check-time-msg'>" + localize_strings.checking_balance_timer + "</small>";
         runInterval();
     }
     else if (JSON.parse(data).status == 'completed') {

@@ -3,13 +3,9 @@
 Plugin Name: Crypto Payments Woo
 Plugin URI: https://github.com/Idan-Neeman/Crypto-Payments-Woo
 Description: Accept Bitcoin/FairCoin payment from WooCommerce store without help of middle man! Receive payment instantly and directly to your own coin address (generate on-the-fly by Electrum) without rotating to 3rd party wallet.
-Version: 1.1
+Version: 1.2
 Author: Idan Neeman
 Author URI: https://github.com/Idan-Neeman
-Text Domain: WCP_I18N_DOMAIN
-Domain Path: /lang
-WC requires at least: 3.0.0
-WC tested up to: 4.2.0
 License: GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl.html
 */
 
@@ -131,7 +127,7 @@ function WCP_set_lang_file()
 	if (!empty($currentLocale)) {
 		$moFile = dirname(__FILE__) . '/lang/' . $currentLocale . '.mo';
 		if (@file_exists($moFile) && is_readable($moFile)) {
-			load_textdomain('WCP_I18N_DOMAIN', $moFile);
+			load_textdomain(WCP_I18N_DOMAIN, $moFile);
 		}
 	}
 }

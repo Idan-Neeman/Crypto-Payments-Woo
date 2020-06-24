@@ -35,11 +35,11 @@ $g_wcp_config_defaults = array(
 
 global $g_wcp_btc_user_defaults;
 $g_wcp_btc_user_defaults = array(
-	'confs_num'            								 		 => '1',
+	'confs_num'            								 		 => '6',
 	'exchange_reference_rate'											 => 'Coingecko',
 	'exchange_multiplier'											 => '1.00',
 	'exchange_rate_cache_time'								 => '20',
-	'starting_index_for_new_addresses'		     => '1',
+	'starting_index_for_new_addresses'		     => '5',
 	'autocomplete_paid_orders'                 => '1',
 );
 
@@ -48,7 +48,7 @@ $g_wcp_fair_user_defaults = array(
 	'exchange_reference_rate'											 => 'FreeVision',
 	'exchange_multiplier'											 => '1.00',
 	'exchange_rate_cache_time'								 => '20',
-	'starting_index_for_new_addresses'		     => '1',
+	'starting_index_for_new_addresses'		     => '5',
 	'autocomplete_paid_orders'                 => '1',
 );
 

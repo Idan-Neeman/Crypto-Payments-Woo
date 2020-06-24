@@ -70,10 +70,6 @@ If you encounter any problems, please open an issue.
 ![BTC Gateway Settings](screenshots/screenshot-4.png?raw=true)
 5. FAIR Gateway Settings
 ![FAIR Gateway Settings](/screenshots/screenshot-5.png?raw=true)
-6. Choose Crypto Gateway In Checkout Page
-![FAIR Gateway Settings](/screenshots/screenshot-6.png?raw=true)
-7. Payment Form
-![FAIR Gateway Settings](/screenshots/screenshot-7.png?raw=true)
 
 == Remove plugin ==
 
@@ -109,6 +105,9 @@ Are there any fees? No! There is no middle man, no fees are ever taken at any po
 Can I contribute? Sure! Go ahead and make a pull request. Clearly explain what the change does, what's the intended result and why it's required and if it changes any existing behaviour.
 
 == Changelog ==  
+= 1.2 =
+* Fix url of FairCoin blockchain api endpoint
+
 = 1.1 =
 * Auto balance checking in order forms (using AJAX)
 

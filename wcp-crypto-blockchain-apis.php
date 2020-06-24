@@ -89,7 +89,7 @@ class FairExplorer extends BlockchainAPI
 	{
 		$funds_received = $this->extract_funds_received(@json_decode(trim(
 			@WCP__file_get_contents(
-				'http://server.faircoin.co/api/balance.php?address=' . $address['fair_address'],
+				'https://faircoin.co/api/balance.php?address=' . $address['fair_address'],
 				$this->api_timeout
 			)
 		), true),$check_confirmation);

@@ -5,7 +5,7 @@ if (!defined('WCP_PLUGIN_NAME')) {
     define('WCP_PLUGIN_NAME', 'Crypto Payments Woo');
 }
 if (!defined('WCP_VERSION')) {
-    define('WCP_VERSION', '1.1');
+    define('WCP_VERSION', '1.2');
 }
 if (!defined('WCP_SETTINGS_NAME')) {
     define('WCP_SETTINGS_NAME', 'WCP-Settings');
@@ -23,6 +23,11 @@ if (!defined('WCP_GENERAL_SETTINGS')) {
 }
 if (!defined('WCP_API_SETTINGS')) {
     define('WCP_API_SETTINGS', 'WCP_api');
+}
+//==============================================================================
+// i18n plugin domain for language files
+if (!defined('WCP_I18N_DOMAIN')) {
+    define('WCP_I18N_DOMAIN', 'wcp');
 }
 //==============================================================================
 // Select math library

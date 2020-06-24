@@ -750,7 +750,7 @@ if (!class_exists('WP_OSA')) :
 			add_submenu_page(
 				'wcp-settings',                                        // Parent
 				'Crypto Payments Woo',                   // Page title
-				__('General Settings', 'WCP_I18N_DOMAIN'),               // Menu Title
+				__('General Settings', WCP_I18N_DOMAIN),               // Menu Title
 				'administrator',                                        // Capability
 				'wcp-settings',                                        // Handle - First submenu's handle must be equal to parent's handle to avoid duplicate menu entry.
 				array($this, 'plugin_page')                    // Function
@@ -759,7 +759,7 @@ if (!class_exists('WP_OSA')) :
 			add_submenu_page(
 				'wcp-settings',                                        // Parent
 				'Crypto Payments Woo',       // Page title
-				__('BTC Gateway Settings', 'WCP_I18N_DOMAIN'),                // Menu title
+				__('BTC Gateway Settings', WCP_I18N_DOMAIN),                // Menu title
 				'administrator',                                        // Capability
 				'wcp-settings-btc',                        //
 				array($this, 'btc_gateway_page')          // Function
@@ -768,7 +768,7 @@ if (!class_exists('WP_OSA')) :
 			add_submenu_page(
 				'wcp-settings',                                        // Parent
 				'Crypto Payments Woo',       // Page title
-				__('FAIR Gateway Settings', 'WCP_I18N_DOMAIN'),                // Menu title
+				__('FAIR Gateway Settings', WCP_I18N_DOMAIN),                // Menu title
 				'administrator',                                        // Capability
 				'wcp-settings-fair',                        //
 				array($this, 'fair_gateway_page')          // Function

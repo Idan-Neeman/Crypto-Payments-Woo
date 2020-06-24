@@ -112,7 +112,7 @@ class FreeVision extends ExchangeRateAPI {
 	}
 
 	public function get_exchange_rate() {
-		$source_url = 'http://server.faircoin.co/api/freevision.php';
+		$source_url = 'https://faircoin.co/api/freevision.php';
 		$result     = @WCP__file_get_contents( $source_url, $this->exchange_rate_api_timeout_secs );
 
 		$rate_obj = @json_decode( trim( $result ), true );
@@ -134,7 +134,7 @@ class FairCoop extends ExchangeRateAPI {
 	}
 
 	public function get_exchange_rate() {
-		$source_url = 'http://server.faircoin.co/api/faircoop.php';
+		$source_url = 'https://faircoin.co/api/faircoop.php';
 		$result     = @WCP__file_get_contents( $source_url, $this->exchange_rate_api_timeout_secs );
 
 		$rate_obj = @json_decode( trim( $result ), true );
@@ -156,7 +156,7 @@ class Fairo extends ExchangeRateAPI {
 	}
 
 	public function get_exchange_rate() {
-		$source_url = 'http://server.faircoin.co/api/fairo.php';
+		$source_url = 'https://faircoin.co/api/fairo.php';
 		$result     = @WCP__file_get_contents( $source_url, $this->exchange_rate_api_timeout_secs );
 
 		$rate_obj = @json_decode( trim( $result ), true );
@@ -178,7 +178,7 @@ class Bisq extends ExchangeRateAPI {
 	}
 
 	public function get_exchange_rate() {
-		$source_url = 'http://server.faircoin.co/api/bisq.php';
+		$source_url = 'https://faircoin.co/api/bisq.php';
 		$result     = @WCP__file_get_contents( $source_url, $this->exchange_rate_api_timeout_secs );
 
 		$rate_obj = @json_decode( trim( $result ), true );

@@ -50,7 +50,7 @@ function WCP__plugins_loaded__load_crypto_gateway()
 
 			$this->description                    = $this->settings['description'];   // Short description about the gateway which is shown on checkout.
 			$this->instructions                   = $this->settings['instructions'];  // Detailed payment instructions for the buyer.
-			$this->instructions_multi_payment_str = __('You may send payments from multiple accounts to reach the total required.', 'WCP_I18N_DOMAIN');
+			$this->instructions_multi_payment_str = __('You may send payments from multiple accounts to reach the total required.', 'woocommerce');
 			// $this->instructions_single_payment_str = __('You must pay in a single payment in full.', 'woocommerce');
 			// Actions
 			if (version_compare(WOOCOMMERCE_VERSION, '2.0.0', '>=')) {
@@ -311,7 +311,7 @@ function WCP__plugins_loaded__load_crypto_gateway()
 					'title'       => __('Customer Message', 'woocommerce'),
 					'type'        => 'text',
 					'description' => __('Initial instructions for the customer at checkout screen', 'woocommerce'),
-					'default'     => __('Please, proceed to the next screen to see necessary payment details.', 'WCP_I18N_DOMAIN'),
+					'default'     => __('Please proceed to the next screen to see necessary payment details.', 'woocommerce'),
 				),
 				'instructions'                         => array(
 					'title'       => __('Payment Instructions (HTML)', 'woocommerce'),

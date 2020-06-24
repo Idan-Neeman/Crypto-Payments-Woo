@@ -16,7 +16,7 @@ class WCP_Bitcoin_BTC extends WCP_Crypto
 
 	public function get_payment_method_title()
 	{
-		return __('Bitcoin', 'WCP_I18N_DOMAIN');
+		return __('Bitcoin', 'woocommerce');
 	}
 
 	public function get_gateway_id()
@@ -62,7 +62,7 @@ class WCP_Bitcoin_BTC extends WCP_Crypto
 	{
 		$payment_instructions_description = '
           <p class="description" style="width:50%;float:left;width:45%;">
-            ' . __('Specific instructions given to the customer to complete Bitcoins payment.<br />You may change it, but make sure these tags will be present: <b>{{{BITCOINS_AMOUNT}}}</b>, <b>{{{BITCOINS_ADDRESS}}}</b>, <b>{{{BITCOINS_PAY_URL}}}</b> and <b>{{{EXTRA_INSTRUCTIONS}}}</b> as these tags will be replaced with customer - specific payment details.', 'WCP_I18N_DOMAIN') . '
+            ' . __('Specific instructions given to the customer to complete Bitcoins payment.<br />You may change it, but make sure these tags will be present: <b>{{{BITCOINS_AMOUNT}}}</b>, <b>{{{BITCOINS_ADDRESS}}}</b>, <b>{{{BITCOINS_PAY_URL}}}</b> and <b>{{{EXTRA_INSTRUCTIONS}}}</b> as these tags will be replaced with customer - specific payment details.', 'woocommerce') . '
           </p>
           <p class="description" style="width:50%;float:right;width:50%;">
 		  ' . __('Payment Instructions, original template (for reference):<br />', 'WCP_I18N_DOMAIN') . '
@@ -127,7 +127,7 @@ class WCP_Bitcoin_BTC extends WCP_Crypto
 
 		' . __('Please note:', 'WCP_I18N_DOMAIN') . '
 		<ol>
-			<li>' . __('The payment method chosen ONLY accepts Bitcoin (BTC). any other electronic cash payments will not process and the money will be lost forever!', 'WCP_I18N_DOMAIN') . '</li>
+			<li>' . __('The payment method chosen ONLY accepts Bitcoin (BTC). any other electronic cash payments will not process and the money will be lost forever!', 'woocommerce') . '</li>
 			<li>' . __('We are not responsible for lost funds if you send anything other than FAIR', 'WCP_I18N_DOMAIN') . '</li>
 			<li>' . __('You must initiate a payment within 1 hour, or your order may be cancelled', 'WCP_I18N_DOMAIN') . '</li>
 			<li>' . __('As soon as your payment is received in full you will receive email confirmation with order delivery details.', 'WCP_I18N_DOMAIN') . '</li>
@@ -160,7 +160,7 @@ class WCP_Bitcoin_BTC extends WCP_Crypto
 				$instructions
 			);
 		if ($add_order_note) {
-			$order->add_order_note(__("Order instructions: price={$order_total_in_btc} BTC, incoming account:{$bitcoins_address}", 'WCP_I18N_DOMAIN'));
+			$order->add_order_note(__("Order instructions: price={$order_total_in_btc} BTC, incoming account:{$bitcoins_address}", 'woocommerce'));
 		}
 
 		return $instructions;
