@@ -44,7 +44,7 @@ If you encounter any problems, please open an issue.
 2.  Install "Crypto Payments Woo" wordpress plugin just like any other Wordpress plugin.
 3.  Activate.
 4.  Download and install on your computer Electrum wallet program (Bitcoin - https://electrum.org | FairCoin - https://faircoin.co/download)
-5.  Run and setup your wallet. For each Electrum please do the following actions:
+5.  Run and setup your wallet, choose legacy (p2pkh) as script type. For each Electrum please do the following actions:
 6.  Click on View->Show Console
 7.  Click on "Console" tab and run this command (to extend the size of wallet's gap limit): wallet.storage.put('gap_limit',1000)
 8.  Grab your wallet's Master Public Key by navigating to:
